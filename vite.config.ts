@@ -1,30 +1,38 @@
-import react from "@vitejs/plugin-react";
-import path from "path";
-import { defineConfig } from "vite";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, 'src'),
     },
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   build: {
-    lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
-      name: "BizUI",
-      fileName: (format) => `biz-ui.${format === "es" ? "js" : "umd.js"}`,
-      formats: ["es", "umd"],
-    },
     rollupOptions: {
-      external: ["react", "react-dom", "react-router-dom"],
+      input: {
+        Button: path.resolve(__dirname, 'src/lib/components/Button.jsx'),
+        Card: path.resolve(__dirname, 'src/lib/components/Card.jsx'),
+        Dropdown: path.resolve(__dirname, 'src/lib/components/Dropdown.jsx'),
+        Input: path.resolve(__dirname, 'src/lib/components/Input.jsx'),
+        Text: path.resolve(__dirname, 'src/lib/components/Text.jsx'),
+      },
       output: {
+        entryFileNames: '[name].js', // File names based on entry points
+        format: 'es', // Use ES modules for code-splitting
         globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
-          "react-router-dom": "ReactRouterDOM"
+          react: 'React',
+          'react-dom': 'ReactDOM',
         },
       },
     },
+    lib: {
+      entry: path.resolve(__dirname, 'lib/components/index.js'),
+      name: 'UIComponents',
+      formats: ['es'], // Use 'es' format only
+    },
+    outDir: 'dist',
   },
 });
