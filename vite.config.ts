@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react()],
@@ -12,27 +12,54 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
+      // external: ["react", "react-dom", "react-router-dom"],
       input: {
-        Button: path.resolve(__dirname, 'src/lib/components/Button.jsx'),
-        Card: path.resolve(__dirname, 'src/lib/components/Card.jsx'),
-        Dropdown: path.resolve(__dirname, 'src/lib/components/Dropdown.jsx'),
-        Input: path.resolve(__dirname, 'src/lib/components/Input.jsx'),
-        Text: path.resolve(__dirname, 'src/lib/components/Text.jsx'),
+        Button: path.resolve(__dirname, "src/lib/components/Button.jsx"),
+        Card: path.resolve(__dirname, "src/lib/components/Card.jsx"),
+        Container: path.resolve(__dirname, "src/lib/components/Container.jsx"),
+        ContainerRow: path.resolve(
+          __dirname,
+          "src/lib/components/ContainerRow.jsx"
+        ),
+        Div: path.resolve(__dirname, "src/lib/components/Div.jsx"),
+        Dropdown: path.resolve(__dirname, "src/lib/components/Dropdown.jsx"),
+        Form: path.resolve(__dirname, "src/lib/components/Form.jsx"),
+        Header: path.resolve(__dirname, "src/lib/components/Header.jsx"),
+        Image: path.resolve(__dirname, "src/lib/components/Image.jsx"),
+        Input: path.resolve(__dirname, "src/lib/components/Input.jsx"),
+        List: path.resolve(__dirname, "src/lib/components/List.jsx"),
+        ListItem: path.resolve(__dirname, "src/lib/components/ListItem.jsx"),
+        SpecialCard: path.resolve(
+          __dirname,
+          "src/lib/components/SpecialCard.jsx"
+        ),
+        Stepper: path.resolve(__dirname, "src/lib/components/Stepper.jsx"),
+        Text: path.resolve(__dirname, "src/lib/components/Text.jsx"),
       },
       output: {
-        entryFileNames: '[name].js', // File names based on entry points
-        format: 'es', // Use ES modules for code-splitting
+        entryFileNames: "[name].js",
+        chunkFileNames: "[name]-[hash].js",
+        format: "es",
+        preserveModules: false,
         globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
+          react: "React",
+          "react-dom": "ReactDOM",
+          "react-router-dom": "ReactRouterDOM",
         },
       },
     },
     lib: {
-      entry: path.resolve(__dirname, 'lib/components/index.js'),
-      name: 'UIComponents',
-      formats: ['es'], // Use 'es' format only
+      entry: path.resolve(__dirname, "lib/components/index.js"),
+      name: "UIComponents",
+      formats: ["es"],
+      // fileName: (format) => `uicomponents.${format}.js`,
     },
-    outDir: 'dist',
+    outDir: "dist",
+    // sourcemap: true,
+    // minify: "esbuild",
+    // target: "esnext",
   },
+  // esbuild: {
+  //   jsx: "automatic",
+  // },
 });

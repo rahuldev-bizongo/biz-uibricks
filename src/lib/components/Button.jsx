@@ -2,6 +2,16 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '../../components/ui/button';
 
+// const ButtonContext = createContext({});
+
+// const ButtonProvider = ({ children }) => {
+//   return (
+//     <ButtonContext.Provider value={{}}>
+//       {children}
+//     </ButtonContext.Provider>
+//   );
+// };
+
 const BizButton = ({ label, type, style, action }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -65,7 +75,11 @@ const BizButton = ({ label, type, style, action }) => {
   };
 
   return (
-    // <button type={type || 'button'} style={style} onClick={handleClick}>
+    // <button
+    //   type={type || 'button'}
+    //   style={{ border: "8px 16px", borderRadius: '8px', cursor: 'pointer' }}
+    //   onClick={handleClick}
+    // >
     //   {label}
     // </button>
 
@@ -73,4 +87,5 @@ const BizButton = ({ label, type, style, action }) => {
   );
 };
 
+// export const providers = ButtonProvider;
 export default BizButton;

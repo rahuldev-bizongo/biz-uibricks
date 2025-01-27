@@ -1,5 +1,3 @@
-import React from 'react';
-
 const logo = 'https://next.bizongo.com/assets/next.9df68a9fd76a976153351c39c2b9f452.svg'
 
 const Header = ({ content, style, imageSrc, imageAlt, imageStyle }) => {

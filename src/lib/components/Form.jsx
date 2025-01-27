@@ -1,5 +1,15 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
+// const FormContext = createContext({});
+
+// const FormProvider = ({ children }) => {
+//   return (
+//     <FormContext.Provider value={{}}>
+//       {children}
+//     </FormContext.Provider>
+//   );
+// };
+
 const Form = ({ action, children, onSubmit, ...props }) => {
   const navigate = useNavigate();
 
@@ -107,4 +117,5 @@ const Form = ({ action, children, onSubmit, ...props }) => {
   );
 };
 
+// export const providers = FormProvider;
 export default Form;
