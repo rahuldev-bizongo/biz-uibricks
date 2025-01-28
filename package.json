@@ -1,18 +1,35 @@
 {
-  "name": "@bizongo/biz-ui",
+  "name": "@bizongo/biz-uibricks",
   "version": "1.0.0",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/biz-ui.umd.js",
+  "main": "./dist/biz-ui.js",
   "module": "./dist/biz-ui.js",
-  "types": "dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/biz-ui.js",
-      "require": "./dist/biz-ui.umd.js"
-    }
+      "require": "./dist/biz-ui.js"
+    },
+    "./components/*": "./dist/components/*",
+    "./Button": "./dist/components/Button.js",
+    "./Card": "./dist/components/Card.js",
+    "./Container": "./dist/components/Container.js",
+    "./ContainerRow": "./dist/components/ContainerRow.js",
+    "./Div": "./dist/components/Div.js",
+    "./Dropdown": "./dist/components/Dropdown.js",
+    "./Form": "./dist/components/Form.js",
+    "./Header": "./dist/components/Header.js",
+    "./Image": "./dist/components/Image.js",
+    "./Input": "./dist/components/Input.js",
+    "./List": "./dist/components/List.js",
+    "./ListItem": "./dist/components/ListItem.js",
+    "./SpecialCard": "./dist/components/SpecialCard.js",
+    "./Stepper": "./dist/components/Stepper.js",
+    "./Text": "./dist/components/Text.js"
   },
   "scripts": {
     "dev": "vite",

@@ -1,24 +1,11 @@
-import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '../../components/ui/button';
 
-// const ButtonContext = createContext({});
-
-// const ButtonProvider = ({ children }) => {
-//   return (
-//     <ButtonContext.Provider value={{}}>
-//       {children}
-//     </ButtonContext.Provider>
-//   );
-// };
-
-const BizButton = ({ label, type, style, action }) => {
+const BizButton = ({ label, type, style, action, variant = "outline" }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-
   const dataId = queryParams.get("dataId");
-
 
   const handleClick = async () => {
     if (!action) return;
@@ -29,10 +16,8 @@ const BizButton = ({ label, type, style, action }) => {
         if (action.passInputDataId && dataId) {
           url = `${url}?dataId=${dataId}`;
         }
-        // Navigate directly
         navigate(url);
       } else if (action.type === 'api') {
-        // Perform API call only
         const response = await fetch(action.url, {
           method: action.method || 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -46,7 +31,6 @@ const BizButton = ({ label, type, style, action }) => {
 
         console.log('API response:', await response.json());
       } else if (action.type === 'apiAndNavigate') {
-        // Perform API call and navigate
         const response = await fetch(action.url, {
           method: action.method || 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -75,17 +59,15 @@ const BizButton = ({ label, type, style, action }) => {
   };
 
   return (
-    // <button
-    //   type={type || 'button'}
-    //   style={{ border: "8px 16px", borderRadius: '8px', cursor: 'pointer' }}
-    //   onClick={handleClick}
-    // >
-    //   {label}
-    // </button>
-
-    <Button variant="outline" type={type || 'button'} onClick={handleClick}>{label}</Button>
+    <Button 
+      variant={variant} 
+      type={type || 'button'} 
+      onClick={handleClick}
+      style={style}
+    >
+      {label}
+    </Button>
   );
 };
 
-// export const providers = ButtonProvider;
 export default BizButton;
