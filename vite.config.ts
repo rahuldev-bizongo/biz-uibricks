@@ -34,9 +34,14 @@ export default defineConfig({
       output: {
         entryFileNames: "components/[name].js",
         chunkFileNames: "chunks/[name]-[hash].js",
-        format: "iife",
+        format: "es",
         dir: "dist",
-        preserveModules: false,
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'index.css') {
+            return 'styles/tailwind.css';
+          }
+          return 'assets/[name][extname]';
+        }
       },
     },
     lib: {
@@ -48,6 +53,7 @@ export default defineConfig({
     sourcemap: true,
     minify: 'esbuild',
     cssMinify: true,
+    cssCodeSplit: false,
     modulePreload: {
       polyfill: false
     },
