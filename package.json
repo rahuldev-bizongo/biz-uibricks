@@ -31,7 +31,8 @@
     "./ListItem": "./dist/components/ListItem.js",
     "./SpecialCard": "./dist/components/SpecialCard.js",
     "./Stepper": "./dist/components/Stepper.js",
-    "./Text": "./dist/components/Text.js"
+    "./Text": "./dist/components/Text.js",
+    "./Heading": "./dist/components/Heading.js"
   },
   "scripts": {
     "dev": "vite",
@@ -41,8 +42,7 @@
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^7.0.2"
+    "react-dom": "^18.2.0"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",

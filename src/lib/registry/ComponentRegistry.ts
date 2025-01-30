@@ -91,4 +91,10 @@ window.ComponentRegistry = {
       image: "",
     },
   },
+  Heading: {
+    defaultProps: {
+      content: "",
+      type: "primary",
+    },
+  },
 };
